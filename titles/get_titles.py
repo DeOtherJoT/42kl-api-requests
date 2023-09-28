@@ -26,10 +26,8 @@ token = oauth.fetch_token(
     token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-scale_team_id = 5852305
-
-# Make a DELETE request
-response = oauth.delete(f"{SITE}/v2/scale_teams/{scale_team_id}")
+# Make a  request
+response = oauth.get(f"{SITE}/v2/titles/1649")
 
 # Print response status and content
 print(response.status_code)
