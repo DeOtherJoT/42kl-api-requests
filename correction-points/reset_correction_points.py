@@ -33,22 +33,26 @@ token = oauth.fetch_token(
 
 
 # Can be negative to remove correction points
-amount = 1
 
 # Who to airdrop
 user_ids = [
-    "lkah-chu"
+    "wikee",
 ]
 
 
 # Field needed by intra
-reason = "starting core programme"
-
+reason = "reset to 5"
+RESET_TO = 5
 # Build payload
-payload = {"reason": reason, "amount": str(amount)}
+payload = {"reason": reason, "amount": 0}
 
 for user_id in user_ids:
     # Make request
+    response = oauth.get(f"{SITE}/v2/users/{user_id}")
+    correction_points = int(response.json()['correction_point'])
+    diff = (RESET_TO - correction_points) if (correction_points < RESET_TO) else ((correction_points * -1) + RESET_TO)
+    print(f"{user_id} had {correction_points} points, requested to add {diff}")
+    payload['amount'] = diff
     response = oauth.post(
         f"{SITE}/v2/users/{user_id}/correction_points/add", json=payload
     )
@@ -58,5 +62,5 @@ for user_id in user_ids:
     if int(response.status_code) != 200:
         color = Fore.RED
     print(f"{color} {user_id} {response.status_code} {response.text}")
-    # Wait 0.5 seconds to not get ratelimited
-    time.sleep(0.5)
+    # Wait 1 seconds to not get ratelimited, 2 requests / second
+    time.sleep(1)

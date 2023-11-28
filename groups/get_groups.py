@@ -26,8 +26,8 @@ token = oauth.fetch_token(
     token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-# Make a request
-response = oauth.get(f"{SITE}/v2/users/wehuang")
+# Make a  request
+response = oauth.get(f"{SITE}/v2/groups/1")
 
 # Print response status and content
 print(response.status_code)

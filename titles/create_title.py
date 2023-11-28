@@ -27,7 +27,7 @@ token = oauth.fetch_token(
 )
 
 # Make a request
-response = oauth.post(f"{SITE}/v2/titles?title[name]=Prophet of the Church of the 2,000 Hours, %login")
+response = oauth.post(f"{SITE}/v2/titles?title[name]=%login, Styrofoam Ranger")
 
 # Print response status and content
 print(response.status_code)

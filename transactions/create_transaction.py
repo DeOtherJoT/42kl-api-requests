@@ -25,9 +25,17 @@ oauth = OAuth2Session(client=client)
 token = oauth.fetch_token(
     token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
+payload = {
+    "transaction": {
+        "value": 100,
+        "user_id": 142835,
+        "transactable_type": "Tutuer api",
+        "reason": "refund",
+    }
+}
 
 # Make a request
-response = oauth.get(f"{SITE}/v2/users/wehuang")
+response = oauth.post(f"{SITE}/v2/transactions", json=payload)
 
 # Print response status and content
 print(response.status_code)

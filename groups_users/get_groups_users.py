@@ -3,6 +3,7 @@ from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 from dotenv import load_dotenv
 import os
+import time
 
 load_dotenv()
 
@@ -26,9 +27,17 @@ token = oauth.fetch_token(
     token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-# Make a request
-response = oauth.get(f"{SITE}/v2/users/wehuang")
+
+
+# Build payload
+# payload = {'groups_user':{"group_id": 1, "user_id": '66662'}}
+
+# Make request
+response = oauth.get(f"{SITE}/v2/users/80962/groups_users")
 
 # Print response status and content
 print(response.status_code)
 print(response.text)
+
+# Wait 0.5 seconds to not get ratelimited
+time.sleep(0.5)

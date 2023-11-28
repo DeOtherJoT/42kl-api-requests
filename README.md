@@ -19,4 +19,5 @@ edit the secret values inside .env file
 - ### Project > projects-users
 - ### Titles > titles
 - ### Users > users
+- ### Blackhole > users
 - ### Tags > tags

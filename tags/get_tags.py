@@ -27,7 +27,7 @@ token = oauth.fetch_token(
 )
 
 # Make a  request
-response = oauth.get(f"{SITE}/v2/users/bshamsid/tags")
+response = oauth.get(f"{SITE}/v2/tags")
 
 # Print response status and content
 print(response.status_code)
