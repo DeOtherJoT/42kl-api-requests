@@ -10,6 +10,9 @@ colorama.init(autoreset=True)
 
 load_dotenv()
 
+# JUST RUN python3 create_exam.pY
+# ALL INPUTS ARE PROMPTED
+
 # Yay API token stuff
 UID = os.getenv("42-UID")
 SECRET = os.getenv("42-SECRET")
