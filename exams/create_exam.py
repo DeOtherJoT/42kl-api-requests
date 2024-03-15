@@ -10,7 +10,8 @@ colorama.init(autoreset=True)
 
 load_dotenv()
 
-# JUST RUN python3 create_exam.pY
+# HOW 2 USE:
+# JUST RUN python3 create_exam.py
 # ALL INPUTS ARE PROMPTED
 
 # Yay API token stuff
