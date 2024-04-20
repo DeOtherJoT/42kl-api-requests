@@ -28,7 +28,11 @@ token = oauth.fetch_token(
 	token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-response = oauth.get(f"{SITE}/v2/scale_teams/{6590977}")
+# Get ID of the scale teams from running the script get_teams_of_user.py
+# Each evaluation session will have their own scale_teams_id.
+scale_teams_id = 6621457
+
+response = oauth.get(f"{SITE}/v2/scale_teams/{scale_teams_id}")
 
 if response.status_code == 200:
 	color = Fore.GREEN
