@@ -28,19 +28,6 @@ token = oauth.fetch_token(
 	token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-# payload = {}
-# payload["scale_teams"] = []
-
-# team_id = input("Input the team id: ")
-# evaluator_id = input("Input the id of the evaluator: ")
-# begin_at = "2024-04-11T12:00:00.000Z"
-
-# payload["scale_teams"].append({
-# 	"team_id": team_id,
-# 	"begin_at": begin_at,
-# 	"user_id": evaluator_id
-# })
-
 # Prompt admin for evaluator, use that to find the ID.
 # For this we will use GET /v2/users/:id
 evaluator = input(f"{Fore.YELLOW}Type in the intra id of the evaluator: ").lower()
