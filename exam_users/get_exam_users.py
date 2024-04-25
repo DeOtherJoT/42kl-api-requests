@@ -28,7 +28,7 @@ token = oauth.fetch_token(
 	token_url=f"{SITE}/oauth/token", client_id=UID, client_secret=SECRET, scope=SCOPE
 )
 
-# Get ID of the scale teams from running the script exams > get_exams.py
+# Get ID of the exam from running the script exams > get_exams.py
 exam_id = 17844
 
 response = oauth.get(f"{SITE}/v2/exams/{exam_id}/exams_users")
