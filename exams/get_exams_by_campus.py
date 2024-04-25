@@ -28,10 +28,10 @@ token = oauth.fetch_token(
 
 response = oauth.get(f"{SITE}/v2/campus/34/exams")
 
-# color = Fore.GREEN
-# if int(response.status_code) != 200:
-# 	color = Fore.RED
-# print(f"{color} {response.status_code} {response.text}")
+color = Fore.GREEN
+if int(response.status_code) != 200:
+	color = Fore.RED
+print(f"{color} {response.status_code}")
 
 data = json.loads(response.text)
 
@@ -39,5 +39,5 @@ data = json.loads(response.text)
 
 json_obj = json.dumps(data, indent=4)
 
-with open("exams.json", "w") as outfile:
+with open("exams_of_campus_34.json", "w") as outfile:
 	outfile.write(json_obj)
