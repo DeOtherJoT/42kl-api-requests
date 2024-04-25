@@ -41,8 +41,38 @@ else:
 student_data = json.loads(get_student_id.text)
 student_id = student_data["id"]
 
-# Get the ID of the exam, manual for now
-exam_id = 17852
+# Get the ID of the previous 5 exams using GET /v2/campus/:campus_id/exams
+# From there, allow admin to choose which one to register the user for.
+get_exam_req = oauth.get(f"{SITE}/v2/campus/34/exams")
+
+if (get_exam_req.status_code != 200):
+	raise Exception("Error on GET request for /v2/campus/:campus_id/exams")
+
+exam_data = json.loads(get_exam_req.text)
+count = 0
+options = []
+
+print(f"{Fore.CYAN}+{'':-^7}+{'':-^9}|{'':-^35}+{'':-^12}+")
+print(f"{Fore.CYAN}|{'INDEX': ^7}|{'ID': ^9}|{'NAME': ^35}|{'DATE': ^12}|")
+print(f"{Fore.CYAN}+{'':-^7}+{'':-^9}|{'':-^35}+{'':-^12}+")
+
+for item in exam_data:
+	if count == 5:
+		break
+	exam_start = item['begin_at'].split('T')[0]
+	print(f"{Fore.CYAN}|{count: ^7}|{item['id']: ^9}|{item['name']: ^35}|{exam_start: ^12}|")
+	options.append([item['id'], item['name'], exam_start])
+	count += 1
+
+
+print(f"{Fore.CYAN}+{'':-^7}+{'':-^9}|{'':-^35}+{'':-^12}+")
+
+exam_choice = int(input(f"{Fore.YELLOW}Type in the index of the exam to add the student into: "))
+print(f"{Fore.CYAN}Chosen {options[exam_choice][1]} that starts on {options[exam_choice][2]}")
+exam_id = options[exam_choice][0]
+
+# Confirmation
+confirm = input(f"{Fore.RED}[ CONFIRMATION ] - Press Enter to add {intra_id} to the above exam.")
 
 # Build payload
 payload = {
