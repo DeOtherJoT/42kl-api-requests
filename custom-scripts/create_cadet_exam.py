@@ -34,6 +34,8 @@ dt_today = dt.now()
 num_to_wed = 3 - int(dt_today.strftime("%w"))
 
 dt_wed = dt_today + timedelta(days=num_to_wed)
+if (num_to_wed <= 0):
+	dt_wed += timedelta(days=7)
 dt_sat = dt_wed + timedelta(days=3)
 
 wed_start = dt_wed.strftime("%Y-%m-%dT06:00:00.000Z")
