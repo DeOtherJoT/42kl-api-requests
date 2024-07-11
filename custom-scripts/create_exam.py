@@ -95,7 +95,7 @@ else:
 
 # Ask if the exam is meant to be a pop-up exam, only for Cadet Ranking Exams.
 if exam_choice == 4:
-	popup = input("Is the exam ameant to be invisible? (Y if yes, otherwise no): ")
+	popup = input("Is the exam meant to be a Pop-up? (Y if yes, otherwise no): ")
 	if popup == "Y":
 		choices[exam_choice][1] = "Pop-Up " + choices[exam_choice][1]
 
