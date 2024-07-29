@@ -76,6 +76,7 @@ while (True):
 			sep = ", "
 		exam_location = sep.join(exam_location)
 		ip_range = sep.join(ip_range)
+		break
 	except Exception as err:
 		print(f"{Fore.RED}[ ERROR ] - {err}\nTry again")
 		continue
