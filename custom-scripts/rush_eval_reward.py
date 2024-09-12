@@ -8,7 +8,7 @@ import json
 import colorama
 from colorama import Fore
 
-# colorama.init(autoreset=True)
+colorama.init(autoreset=True)
 
 # IMPORTANT: Make sure you have run generate_user_ids.py beforehand
 
