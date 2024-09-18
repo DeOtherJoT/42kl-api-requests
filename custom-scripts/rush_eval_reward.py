@@ -1,7 +1,6 @@
 from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 from dotenv import load_dotenv
-from datetime import datetime as dt, timedelta
 from time import sleep
 import os
 import json
