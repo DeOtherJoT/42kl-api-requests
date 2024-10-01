@@ -152,12 +152,12 @@ else:
 	default_duration = 4
 	default_time = "14:30"
 
-raw_date = input(f"{Fore.YELLOW}Type in the start date of the exam in the format DD/MM/YYYY, e.g 18/3/2024: ")
+raw_start_date = input(f"{Fore.YELLOW}Type in the start date of the exam in the format DD/MM/YYYY, e.g 18/3/2024: ")
 
 # Start time must be in the format of HH:MM, e.g. 9:00 or 15:30
-raw_time = input(f"{Fore.YELLOW}Type in the start time of the exam (default is {default_time}): ")
-if (raw_time == ""):
-	raw_time = default_time
+raw_start_time = input(f"{Fore.YELLOW}Type in the start time of the exam (default is {default_time}): ")
+if (raw_start_time == ""):
+	raw_start_time = default_time
 
 duration = input(f"{Fore.YELLOW}Type in the number of hours the exam will take (default is {default_duration} hours): ")
 if (duration == ""):
