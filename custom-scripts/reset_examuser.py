@@ -76,7 +76,12 @@ print(f"{Fore.CYAN}Chosen {exam_options[exam_choice][0]} with ID {exam_id}")
 
 # Now that we have found the target exam, list down the users of the exam and prompt which one to
 # delete.
-exam_users_req = oauth.get(f"{SITE}/v2/exams/{exam_id}/exams_users")
+params = {
+	"page": {
+		"size": 100
+	}
+}
+exam_users_req = oauth.get(f"{SITE}/v2/exams/{exam_id}/exams_users", json=params)
 
 if exam_users_req.status_code != 200:
 	print(f"{Fore.RED}[ ERROR ] - Returned code {exam_users_req.status_code}\n[ ERROR ] - {exam_users_req.text}")
