@@ -82,6 +82,11 @@ while (True):
 		print(f"{Fore.RED}[ ERROR ] - {err}\nTry again")
 		continue
 
+print(f"{Fore.CYAN}\nCurrent location is {exam_location}")
+loc_var = input(f"{Fore.YELLOW}Type in new location or leave blank to keep default: ")
+if (loc_var != ""):
+	exam_location = loc_var
+
 payloads = [
 	{
 		"exam": {
