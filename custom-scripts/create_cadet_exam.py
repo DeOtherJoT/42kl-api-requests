@@ -33,17 +33,17 @@ token = oauth.fetch_token(
 # This script has to be run on either Sunday, Monday or Tuesday, otherwise the exams will be
 # created for the following week.
 dt_today = dt.now()
-num_to_wed = 3 - int(dt_today.strftime("%w"))
+num_to_tues = 2 - int(dt_today.strftime("%w"))
 
-dt_wed = dt_today + timedelta(days=num_to_wed)
-if (num_to_wed <= 0):
-	dt_wed += timedelta(days=7)
-dt_sat = dt_wed + timedelta(days=3)
+dt_tues = dt_today + timedelta(days=num_to_tues)
+if (num_to_tues <= 0):
+	dt_tues += timedelta(days=7)
+dt_thurs = dt_tues + timedelta(days=2)
 
-wed_start = dt_wed.strftime("%Y-%m-%dT06:00:00.000Z")
-wed_end = dt_wed.strftime("%Y-%m-%dT09:00:00.000Z")
-sat_start = dt_sat.strftime("%Y-%m-%dT06:00:00.000Z")
-sat_end = dt_sat.strftime("%Y-%m-%dT09:00:00.000Z")
+tues_start = dt_tues.strftime("%Y-%m-%dT06:00:00.000Z")
+tues_end = dt_tues.strftime("%Y-%m-%dT09:00:00.000Z")
+thurs_start = dt_thurs.strftime("%Y-%m-%dT06:00:00.000Z")
+thurs_end = dt_thurs.strftime("%Y-%m-%dT09:00:00.000Z")
 
 # Get exam location - match it with the proper unit IP address.
 print(f"{Fore.CYAN}\n[ EXAM LOCATION SELECTION ]\n")
@@ -86,8 +86,8 @@ payloads = [
 	{
 		"exam": {
 			"name": "Cadet Ranking Exam",
-			"begin_at": wed_start,
-			"end_at": wed_end,
+			"begin_at": tues_start,
+			"end_at": tues_end,
 			"location": exam_location,
 			"ip_range": ip_range,
 			"campus_id": f"{CAMPUS_ID}",
@@ -98,8 +98,8 @@ payloads = [
 	{
 		"exam": {
 			"name": "Cadet Ranking Exam",
-			"begin_at": sat_start,
-			"end_at": sat_end,
+			"begin_at": thurs_start,
+			"end_at": thurs_end,
 			"location": exam_location,
 			"ip_range": ip_range,
 			"campus_id": f"{CAMPUS_ID}",
